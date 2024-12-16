@@ -109,8 +109,8 @@ const styles = {
     left: '75px', // Ajustado para tamaño reducido
   },
   birthdayText: {
-    marginTop: '30px',
-    fontSize: '4rem',
+    marginTop: '25px',
+    fontSize: '3rem',
     fontWeight: 'bold',
     textAlign: 'center',
     zIndex: 3,
