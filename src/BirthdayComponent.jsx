@@ -80,8 +80,8 @@ const styles = {
   balloon1: { backgroundColor: 'blue' },
   balloon2: { backgroundColor: 'yellow' },
   heart: {
-    width: '300px',
-    height: '300px',
+    width: '150px', // Reducido
+    height: '150px', // Reducido
     backgroundColor: 'red',
     position: 'relative',
     transform: 'rotate(-45deg)',
@@ -90,23 +90,23 @@ const styles = {
   },
   heartBefore: {
     content: '""',
-    width: '300px',
-    height: '300px',
+    width: '150px', // Reducido
+    height: '150px', // Reducido
     backgroundColor: 'red',
     borderRadius: '50%',
     position: 'absolute',
-    top: '-150px',
+    top: '-75px', // Ajustado para tamaño reducido
     left: '0',
   },
   heartAfter: {
     content: '""',
-    width: '300px',
-    height: '300px',
+    width: '150px', // Reducido
+    height: '150px', // Reducido
     backgroundColor: 'red',
     borderRadius: '50%',
     position: 'absolute',
     top: '0',
-    left: '150px',
+    left: '75px', // Ajustado para tamaño reducido
   },
   birthdayText: {
     marginTop: '30px',
