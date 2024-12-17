@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import backgroundImage from './imagenes/fondo.jpg'; // Ruta de la imagen de fondo
+import birthdaySong from "./audios/audio.mp3"; // Ruta del archivo de audio
 
 const BirthdayComponent = () => {
   const [letterColors, setLetterColors] = useState([]);
+  const [hasPlayed, setHasPlayed] = useState(false); // Estado para verificar si el audio se ha reproducido
 
   const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+
+  // Función para reproducir el audio
+  const playAudio = () => {
+    const audio = document.getElementById('birthday-audio');
+    audio.play().catch((error) => {
+      console.error("El audio no se pudo reproducir automáticamente:", error);
+    });
+    setHasPlayed(true);
+  };
 
   useEffect(() => {
     const initialColors = Array.from("¡Feliz Cumpleaños!").map(
@@ -20,6 +31,15 @@ const BirthdayComponent = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Reproducir audio al hacer clic si no se ha reproducido
+  useEffect(() => {
+    if (!hasPlayed) {
+      const handler = () => playAudio();
+      document.addEventListener('click', handler);
+      return () => document.removeEventListener('click', handler);
+    }
+  }, [hasPlayed]);
 
   return (
     <div style={styles.container}>
@@ -49,6 +69,16 @@ const BirthdayComponent = () => {
       {[...Array(100)].map((_, i) => (
         <div key={i} className="confetti" style={styles.confetti(i)}></div>
       ))}
+
+      {/* Audio de fondo */}
+      <audio 
+        id="birthday-audio" 
+        src={birthdaySong} 
+        loop 
+        style={styles.audioPlayer}
+      >
+        Tu navegador no soporta el elemento de audio.
+      </audio>
     </div>
   );
 };
@@ -127,6 +157,12 @@ const styles = {
     animation: `fall ${Math.random() * 3 + 2}s linear infinite`,
     animationDelay: `${index * 0.1}s`, // Retardo de animación para variación
   }),
+  audioPlayer: {
+    marginTop: "20px",
+    position: "absolute",
+    bottom: "20px",
+    left: "20px",
+  },
 };
 
 // Animaciones globales
